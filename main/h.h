@@ -44,6 +44,18 @@ public:
 		delete this->Head;
 	};
 
+	void clear()
+	{
+		Node<T>* current = this->Tail;
+		while (current->left != nullptr)
+		{
+			current = current->left;
+			delete current->rigth;
+		}
+		delete this->Head;
+		this->Head = nullptr;
+		this->Tail = nullptr;
+	}
 	void push(T data, int priority = 1)
 	{
 		if (this->Head == nullptr) //Сейчас в листе 0 элементов

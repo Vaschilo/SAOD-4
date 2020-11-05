@@ -16,17 +16,17 @@ int main()
 	setlocale(LC_ALL, "rus");
 	List<Process> list;
 
-	list.push(Process("a", 5),2);
-	list.push(Process("b", 4),4);
-	list.push(Process("d", 11),2);
-	list.push(Process("e", 2),5);
-	list.push(Process("f", 40),5);
-	list.push(Process("g", 123),3);
-	list.push(Process("h", 61),4);
-	list.push(Process("i", 8),5);
-	list.push(Process("j", 9),4);
-	list.push(Process("k", 10),1);
-	list.push(Process("t", 21),2);
+	list.push(Process("a", 5), 2);
+	list.push(Process("b", 4), 4);
+	list.push(Process("d", 11), 2);
+	list.push(Process("e", 2), 5);
+	list.push(Process("f", 40), 5);
+	list.push(Process("g", 123), 3);
+	list.push(Process("h", 61), 4);
+	list.push(Process("i", 8), 5);
+	list.push(Process("j", 9), 4);
+	list.push(Process("k", 10), 1);
+	list.push(Process("t", 21), 2);
 
 	int choose = 0;
 	int p = 1;

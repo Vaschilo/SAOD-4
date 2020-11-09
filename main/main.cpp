@@ -11,6 +11,7 @@
 #include "h.h"
 #include "Process.h"
 #include <fstream>
+#include <functional>
 
 void from_file(List<Process>& list)
 {
@@ -27,14 +28,51 @@ void from_file(List<Process>& list)
 	f.close();
 }
 
+void from_hand(List<Process>& list)
+{
+	int priority = 3;
+	int runtime = 0;
+	string name = "Std_name";
+
+	function<int(string)> f = [](string a)
+	{
+		int n = 1;
+		do
+		{
+			if (n <= 0) cout << "Введите значение больше 0";
+			cout << "\n\n" << a << "\n\n";
+			cin >> n;
+		} while (n <= 0);
+		return n;
+	};
+
+	int n = f("Введите число процессов");
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Введите название процесса\n";
+		cin >> name;
+		runtime = f("Введите время выполнения процесса");
+		do
+		{
+			if (priority <= 0 || priority > LIMIT) cout << "Введите значение больше 0 и меньше " << LIMIT;
+			cout << "\n\n" << "Введите приоритет для этого процесса" << "\n\n";
+			cin >> priority;
+		} while (priority <= 0 || priority > LIMIT);
+		list.push(Process(name, runtime), priority);
+		system("cls");
+	}
+
+}
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
 	List<Process> list;
 
-	from_file(list);
+	/*from_hand(list);*/
 
-	/*list.push(Process("a", 5), 2);
+	list.push(Process("a", 5), 2);
 	list.push(Process("b", 4), 4);
 	list.push(Process("d", 11), 2);
 	list.push(Process("e", 2), 5);
@@ -44,7 +82,9 @@ int main()
 	list.push(Process("i", 8), 5);
 	list.push(Process("j", 9), 4);
 	list.push(Process("k", 10), 1);
-	list.push(Process("t", 21), 2);*/
+	list.push(Process("t", 21), 2);
+
+	from_file(list);
 
 	int choose = 0;
 	int p = 1;

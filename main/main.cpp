@@ -10,13 +10,31 @@
 
 #include "h.h"
 #include "Process.h"
+#include <fstream>
+
+void from_file(List<Process>& list)
+{
+	fstream f;
+	int priority = 0;
+	Process pr;
+	f.open("file.txt");
+	if (!f.is_open()) return;
+	while (!f.eof())
+	{
+		f >> pr >> priority;
+		list.push(pr, priority);
+	}
+	f.close();
+}
 
 int main()
 {
 	setlocale(LC_ALL, "rus");
 	List<Process> list;
 
-	list.push(Process("a", 5), 2);
+	from_file(list);
+
+	/*list.push(Process("a", 5), 2);
 	list.push(Process("b", 4), 4);
 	list.push(Process("d", 11), 2);
 	list.push(Process("e", 2), 5);
@@ -26,7 +44,7 @@ int main()
 	list.push(Process("i", 8), 5);
 	list.push(Process("j", 9), 4);
 	list.push(Process("k", 10), 1);
-	list.push(Process("t", 21), 2);
+	list.push(Process("t", 21), 2);*/
 
 	int choose = 0;
 	int p = 1;

@@ -33,7 +33,7 @@ public:
 		return out;
 	}
 
-	friend istream& operator>>(istream& in, Process pr)
+	friend istream& operator>>(istream& in, Process& pr)
 	{
 		in >> pr.name >> pr.runtime;
 		return in;

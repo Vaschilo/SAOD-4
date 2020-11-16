@@ -10,7 +10,6 @@
 
 #include "h.h"
 #include "Process.h"
-#include <fstream>
 #include <functional>
 
 void from_file(List<Process>& list)
@@ -95,7 +94,7 @@ int main()
 
 		do
 		{
-			if (choose < 0 || choose > 3) 
+			if (choose < 0 || choose > 4) 
 			{
 				system("cls");
 				cout << "Введите корректное значение";
@@ -105,8 +104,9 @@ int main()
 			cout << "1 - вывести все процессы\n";
 			cout << "2 - вывести процессы данного приоритета\n";
 			cout << "3 - изменить приоритет 1 из процессов\n";
+			cout << "4 - выйти с сохранением в файл\n";
 			cin >> choose;
-		} while (choose < 0 || choose > 3);
+		} while (choose < 0 || choose > 4);
 
 		switch (choose)
 		{
@@ -127,6 +127,10 @@ int main()
 			break;
 		case 3:
 			list.change_priority();
+			break;
+		case 4:
+			list.in_file();
+			return 0;
 			break;
 		}
 		system("pause");

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Process.h"
+#include <fstream>
 
 #define LIMIT 5
 
@@ -43,6 +44,24 @@ public:
 		}
 		delete this->Head;
 	};
+
+	void in_file()
+	{
+		fstream f;
+		int priority = 0;
+		Process pr;
+		f.open("file.txt");
+		if (!f.is_open()) return;
+		Node<T>* current = this->Tail;
+		int i = 0;
+		while (current->left != nullptr)
+		{
+			f << current->GetData() <<" "<< current->GetPriority() << endl;
+			current = current->left;
+		}
+		f << current->GetData() <<" "<< current->GetPriority() << endl;
+		f.close();
+	}
 
 	void clear()
 	{
